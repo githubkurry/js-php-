@@ -1,0 +1,74 @@
+1.function sayHi(){
+    console.log(name);
+    console.log(age);
+    var name = "ming";
+    let age = 21;
+}
+undefine  ReferenceError
+原因：var 声明的变量未赋值的时候未undefine
+     let和const声明的变量没赋值的时候是不可访问的，为ReferenceError
+
+
+
+
+2.for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1);
+}
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1);
+}
+333 012
+原因：var 声明的是全局变量，先被赋值然后再执行setTimeout
+    let 声明的变量有作用块区域
+
+
+
+
+3.const shape = {
+  radius: 10,
+  diameter() {
+    return this.radius * 2;
+  },
+  perimeter: () => 2 * Math.PI * this.radius
+};
+
+shape.diameter();
+shape.perimeter();
+
+20 NaN
+原因：shape是一个对象。调用箭头函数时指向定义时的环境window，没有定义radius，所以是undefine
+
+
+
+
+4.+true;
+!"Lydia";
+1 false
+原因：一元加号将boolean转化为数字类型，“lydia“是一个真值。
+
+
+
+
+5.const bird = {
+  size: "small"
+};
+
+const mouse = {
+  name: "Mickey",
+  small: true
+};
+mouse.bird.size错误。对象键都是字符串
+
+
+
+
+6.let c = { greeting: "Hey!" };
+let d;
+
+d = c;
+c.greeting = "Hello";
+console.log(d.greeting);
+
+Hello
+原因：
